@@ -1,0 +1,266 @@
+/*-- scss:defaults --*/
+$gray-1: #adb5bd !default;
+$gray-2: #6c757d;
+$gray-3: #212529 !default;
+
+$figure-caption-color: $gray-2;
+$float-font-size: 0.9rem;
+$h1-font-size: 1.45rem;
+$link-color: #3B98AB;
+$page-margin-bottom: 1in;
+$page-margin-left: 1in;
+$page-margin-right: 1in;
+$page-margin-top: 1in;
+$page-orientation: portrait;
+$page-size: letter;
+$paragraph-indent: 0.25in;
+$space-after-paragraph: 0.8rem;
+$table-caption-color: $gray-2;
+$title-affiliation-color: $gray-2;
+$title-affiliation-font-size: 0.85rem;
+$viewer-background-color: whitesmoke;
+$viewer-pages-spacing: 10px;
+$viewer-shadow-color: $gray-3;
+
+/*-- scss:rules --*/
+
+/* title block */
+#title-block-header {
+  /* title page is its own page */
+  page: titlepage;
+
+  h1 {
+    line-height: 1.4;
+  }
+
+  .quarto-title-meta-heading {
+    display: none;
+  }
+
+  .block-title {
+    font-weight: bold;
+  }
+
+  .quarto-title-meta-author p.affiliation {
+    font-size: $title-affiliation-font-size;
+    color: $title-affiliation-color;
+    margin-bottom: 0.5rem;
+  }
+
+  .quarto-title-meta-article {
+    margin-top: 1rem;
+
+    .quarto-title-meta-contents {
+      margin: 0.75rem 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .abstract {
+      margin: 0;
+      margin-block-start: 0;
+    }
+  }
+}
+
+/* spacing */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  break-after: avoid;
+}
+
+section.level2:first-child h2 {
+  margin-top: 0;
+}
+
+section.level3:first-child h3 {
+  margin-top: 0;
+}
+
+section.level4:first-child h4 {
+  margin-top: 0;
+}
+
+section.level5:first-child h5 {
+  margin-top: 0;
+}
+
+section.level2 {
+  h2 {
+    padding: 0;
+  }
+
+  p {
+    text-indent: $paragraph-indent;
+  }
+
+  h2+p,
+  h3+p,
+  h4+p,
+  h5+p {
+    text-indent: 0 !important;
+  }
+
+  .references {
+    margin-left: 0 !important;
+  }
+}
+
+/* float environments */
+p+div.quarto-float.quarto-figure {
+  margin-top: 1.5rem;
+}
+
+div.quarto-float.quarto-figure {
+  float: none;
+  font-size: $float-font-size;
+  margin-bottom: 1.5rem;
+  padding: 0;
+  position: unset;
+
+  figure {
+    float: none;
+    position: unset;
+
+    table {
+      margin: 0;
+      border: none;
+
+      /* paged.js adds colgroup widths that overwrite td widths */
+      colgroup col {
+        width: unset !important;
+      }
+
+      :not(caption)>*>* {
+        padding: 0.2rem 0.2rem;
+      }
+
+      :not(caption)>*>td {
+        border: none !important;
+      }
+
+      tbody {
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+      }
+
+      tbody[data-split-to] {
+        border-bottom: none;
+      }
+
+      tbody[data-split-from] {
+        border-top: none;
+      }
+
+      thead {
+        margin-top: 0.5rem;
+      }
+
+      /* 
+        label for packed rows should be left aligned by default
+        but it's getting caught by quarto's bootstrap styling
+      */
+      tr[data-grouplength] {
+        border-top: 1px solid $gray-1;
+
+        td {
+          text-align: left;
+        }
+      }
+
+      tr:first-child[data-grouplength] {
+        border-style: none;
+      }
+
+      tr:has(td[rowspan]) {
+        border-top: 1px solid $gray-1;
+      }
+    }
+
+    table.lines tbody {
+      tr {
+        border-top: 1px solid $gray-1;
+      }
+
+      tr:first-child {
+        border-style: none;
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+/* for trouble-shooting */
+// .pagedjs_pagebox>div {
+//   border: 1px dashed red;
+// }
+// div.quarto-float.quarto-figure {
+//   border: 1px solid red;
+//   figure.quarto-float {
+//     border: 1px solid blue;
+//   }
+// }
+
+/* preview defaults */
+@media screen,
+pagedjs-ignore {
+  body {
+    background-color: $viewer-background-color;
+  }
+
+  .pagedjs_pages {
+    max-width: var(--pagedjs-width);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 auto;
+  }
+
+  .pagedjs_page {
+    background-color: white;
+    box-shadow: 0 0 3px 1px $viewer-shadow-color;
+    flex: none;
+    margin: $viewer-pages-spacing;
+  }
+}
+
+/* print defaults */
+@media print {
+
+  /* avoid the empty extra page added to print */
+  main.content,
+  main.content section.level2:last-child {
+    break-after: avoid;
+  }
+}
+
+/* page specification */
+@page {
+  size: $page-size $page-orientation;
+  margin-top: $page-margin-top;
+  margin-right: $page-margin-right;
+  margin-bottom: $page-margin-bottom;
+  margin-left: $page-margin-left;
+  font-size: $font-size-root;
+
+  @bottom-center {
+    content: counter(page);
+  }
+
+}
+
+@page :first {
+  counter-set: page 0;
+
+  @bottom-center {
+    content: '';
+  }
+}

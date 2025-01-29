@@ -1,0 +1,1227 @@
+site_id,type,count
+1,White Chert,11
+1,Gray Chert,13
+1,Obsidian,3
+2,White Chert,14
+2,Red Chert,6
+3,White Chert,7
+3,Red Chert,4
+3,Gray Chert,9
+3,Red/White Chert,3
+3,Petrified Wood,5
+4,White Chert,8
+4,Red Chert,4
+4,Gray Chert,3
+4,Red/White Chert,4
+4,Dacite,4
+4,Obsidian,9
+5,White Chert,5
+5,Gray Chert,4
+6,White Chert,11
+6,Red Chert,4
+6,Gray Chert,6
+6,Red/White Chert,7
+6,Yellow Chert,8
+6,Dacite,3
+6,Obsidian,9
+6,Petrified Wood,4
+7,White Chert,9
+8,White Chert,5
+8,Red Chert,3
+8,Gray Chert,4
+9,White Chert,10
+9,Red Chert,3
+9,Obsidian,5
+10,White Chert,13
+10,Red Chert,6
+10,Gray Chert,4
+10,Red/White Chert,4
+10,Yellow Chert,2
+10,Dacite,5
+10,Obsidian,9
+10,Petrified Wood,2
+11,White Chert,18
+11,Red Chert,5
+11,Gray Chert,8
+12,White Chert,12
+12,Red Chert,9
+12,Petrified Wood,8
+13,White Chert,15
+13,Red Chert,3
+13,Yellow Chert,4
+13,Dacite,3
+13,Obsidian,9
+14,White Chert,15
+14,Red Chert,4
+14,Dacite,4
+14,Obsidian,8
+15,White Chert,15
+15,Red Chert,4
+15,Gray Chert,4
+15,Red/White Chert,3
+15,Petrified Wood,6
+16,White Chert,11
+16,Red Chert,9
+16,Gray Chert,2
+16,Red/White Chert,5
+16,Petrified Wood,3
+17,White Chert,8
+17,Red Chert,4
+17,Gray Chert,3
+17,Red/White Chert,5
+17,Petrified Wood,9
+18,White Chert,17
+18,Red Chert,3
+18,Petrified Wood,4
+19,White Chert,9
+19,Red Chert,7
+19,Gray Chert,6
+19,Red/White Chert,4
+19,Petrified Wood,7
+20,White Chert,9
+20,Red Chert,8
+20,Gray Chert,7
+20,Red/White Chert,4
+20,Petrified Wood,6
+21,White Chert,7
+21,Red Chert,11
+21,Gray Chert,10
+21,Petrified Wood,5
+22,White Chert,4
+22,Red Chert,14
+22,Gray Chert,11
+22,Petrified Wood,8
+23,White Chert,16
+23,Red Chert,5
+23,Gray Chert,3
+23,Red/White Chert,9
+23,Obsidian,4
+23,Petrified Wood,6
+24,White Chert,8
+24,Red Chert,6
+24,Gray Chert,3
+24,Red/White Chert,5
+24,Petrified Wood,6
+25,White Chert,17
+25,Red Chert,5
+25,Gray Chert,9
+25,Red/White Chert,3
+25,Obsidian,3
+25,Petrified Wood,8
+26,White Chert,6
+26,Red Chert,5
+26,Gray Chert,11
+26,Red/White Chert,5
+26,Dacite,4
+26,Obsidian,4
+26,Petrified Wood,8
+27,White Chert,4
+27,Red Chert,3
+27,Gray Chert,2
+27,Red/White Chert,4
+27,Yellow Chert,4
+27,Chinle Chert,4
+28,White Chert,9
+28,Red Chert,4
+28,Gray Chert,6
+28,Red/White Chert,3
+28,Obsidian,3
+28,Petrified Wood,6
+29,White Chert,6
+29,Red Chert,8
+29,Gray Chert,4
+29,Red/White Chert,5
+29,Petrified Wood,3
+30,White Chert,8
+30,Red Chert,4
+30,Gray Chert,4
+30,Red/White Chert,2
+30,Chinle Chert,2
+30,Rhyolite,3
+30,Obsidian,6
+30,Petrified Wood,3
+31,White Chert,11
+31,Red Chert,3
+31,Chinle Chert,2
+31,Obsidian,11
+32,White Chert,6
+32,Red Chert,7
+32,Gray Chert,8
+32,Red/White Chert,4
+32,Petrified Wood,9
+33,White Chert,15
+33,Red Chert,9
+33,Gray Chert,5
+33,Red/White Chert,6
+33,Petrified Wood,10
+34,White Chert,10
+34,Red Chert,5
+34,Gray Chert,8
+34,Red/White Chert,7
+34,Petrified Wood,8
+35,White Chert,13
+35,Red Chert,9
+35,Gray Chert,7
+35,Red/White Chert,2
+35,Obsidian,5
+36,White Chert,4
+36,Red Chert,7
+36,Gray Chert,8
+36,Red/White Chert,5
+36,Yellow Chert,6
+36,Chinle Chert,8
+37,White Chert,12
+37,Red Chert,6
+37,Gray Chert,5
+37,Red/White Chert,4
+37,Petrified Wood,4
+38,White Chert,6
+38,Red Chert,5
+38,Gray Chert,3
+38,Red/White Chert,7
+38,Petrified Wood,5
+39,White Chert,6
+39,Red Chert,5
+39,Gray Chert,3
+39,Red/White Chert,4
+39,Petrified Wood,9
+40,White Chert,8
+40,Red Chert,5
+40,Gray Chert,8
+40,Red/White Chert,4
+40,Yellow Chert,5
+40,Petrified Wood,10
+41,White Chert,7
+41,Dacite,6
+41,Obsidian,9
+41,Petrified Wood,4
+42,White Chert,7
+42,Red Chert,3
+42,Gray Chert,2
+42,Obsidian,8
+42,Petrified Wood,2
+43,White Chert,8
+43,Red Chert,7
+43,Gray Chert,4
+43,Red/White Chert,4
+43,Obsidian,7
+43,Petrified Wood,5
+44,White Chert,10
+44,Red Chert,5
+44,Gray Chert,4
+44,Red/White Chert,3
+44,Petrified Wood,8
+45,Red Chert,6
+45,Gray Chert,4
+45,Red/White Chert,5
+45,Yellow Chert,6
+45,Chinle Chert,3
+45,Rhyolite,4
+46,Red Chert,8
+46,Gray Chert,5
+46,Red/White Chert,4
+46,Yellow Chert,6
+46,Chinle Chert,4
+47,White Chert,6
+47,Red Chert,5
+47,Gray Chert,4
+47,Red/White Chert,7
+47,Petrified Wood,5
+48,White Chert,7
+48,Red Chert,2
+48,Gray Chert,9
+48,Red/White Chert,3
+48,Petrified Wood,7
+49,White Chert,14
+49,Red Chert,10
+49,Gray Chert,7
+49,Red/White Chert,8
+49,Petrified Wood,11
+50,White Chert,4
+50,Red Chert,3
+50,Gray Chert,15
+50,Red/White Chert,4
+50,Petrified Wood,4
+51,White Chert,9
+51,Red Chert,11
+51,Gray Chert,15
+51,Red/White Chert,2
+51,Petrified Wood,3
+52,White Chert,10
+52,Gray Chert,4
+52,Dacite,3
+52,Obsidian,8
+53,White Chert,15
+53,Yellow Chert,5
+53,Obsidian,2
+53,Petrified Wood,4
+54,White Chert,7
+54,Red Chert,6
+54,Gray Chert,9
+54,Red/White Chert,2
+54,Obsidian,3
+54,Petrified Wood,2
+55,White Chert,5
+55,Red Chert,12
+55,Gray Chert,4
+55,Red/White Chert,5
+55,Petrified Wood,11
+56,White Chert,16
+56,Red Chert,6
+56,Gray Chert,12
+56,Red/White Chert,7
+56,Petrified Wood,4
+57,White Chert,10
+57,Gray Chert,12
+57,Yellow Chert,2
+57,Obsidian,5
+58,White Chert,5
+58,Yellow Chert,6
+59,White Chert,9
+59,Red Chert,3
+59,Obsidian,3
+60,White Chert,10
+60,Gray Chert,6
+60,Obsidian,4
+61,White Chert,7
+61,Red Chert,4
+61,Yellow Chert,5
+61,Obsidian,8
+62,White Chert,11
+62,Red Chert,10
+62,Gray Chert,7
+62,Dacite,4
+63,White Chert,9
+63,Red Chert,2
+63,Obsidian,4
+64,White Chert,10
+64,Red/White Chert,6
+64,Chinle Chert,6
+64,Obsidian,3
+65,Red Chert,5
+65,Gray Chert,9
+66,White Chert,10
+66,Red Chert,6
+66,Obsidian,9
+67,White Chert,7
+67,Red Chert,8
+67,Red/White Chert,6
+68,White Chert,9
+68,Red Chert,2
+68,Gray Chert,3
+68,Yellow Chert,3
+68,Obsidian,2
+69,White Chert,5
+69,Red Chert,4
+69,Gray Chert,2
+69,Red/White Chert,3
+69,Yellow Chert,3
+69,Petrified Wood,3
+70,White Chert,9
+70,Red Chert,11
+70,Gray Chert,5
+70,Red/White Chert,4
+70,Petrified Wood,5
+71,White Chert,3
+71,Red Chert,9
+71,Gray Chert,7
+71,Red/White Chert,5
+71,Yellow Chert,4
+71,Petrified Wood,9
+72,White Chert,9
+72,Red Chert,7
+72,Gray Chert,3
+72,Red/White Chert,9
+72,Yellow Chert,3
+72,Petrified Wood,6
+73,White Chert,3
+73,Red Chert,6
+73,Gray Chert,11
+73,Red/White Chert,5
+73,Yellow Chert,5
+73,Petrified Wood,8
+74,Red Chert,15
+74,Gray Chert,6
+74,Red/White Chert,3
+74,Yellow Chert,2
+74,Petrified Wood,9
+75,White Chert,3
+75,Red Chert,2
+75,Gray Chert,5
+75,Red/White Chert,3
+75,Yellow Chert,2
+75,Rhyolite,5
+75,Petrified Wood,2
+76,White Chert,6
+76,Red Chert,8
+76,Gray Chert,2
+76,Red/White Chert,6
+76,Yellow Chert,6
+76,Petrified Wood,8
+77,White Chert,4
+77,Red Chert,9
+77,Gray Chert,3
+77,Red/White Chert,5
+77,Yellow Chert,3
+77,Petrified Wood,8
+78,White Chert,5
+78,Red Chert,8
+78,Gray Chert,3
+78,Red/White Chert,5
+78,Yellow Chert,9
+78,Dacite,2
+78,Petrified Wood,8
+79,Gray Chert,8
+79,Red/White Chert,4
+79,Yellow Chert,7
+79,Petrified Wood,9
+80,White Chert,5
+80,Red Chert,8
+80,Gray Chert,4
+80,Red/White Chert,9
+80,Yellow Chert,2
+80,Petrified Wood,3
+81,White Chert,6
+81,Red Chert,5
+81,Gray Chert,7
+81,Red/White Chert,3
+81,Yellow Chert,2
+81,Petrified Wood,5
+82,White Chert,5
+82,Red Chert,7
+82,Gray Chert,4
+82,Red/White Chert,4
+82,Yellow Chert,5
+82,Petrified Wood,3
+83,White Chert,7
+83,Red Chert,4
+83,Gray Chert,3
+83,Red/White Chert,2
+83,Yellow Chert,8
+83,Petrified Wood,5
+84,White Chert,5
+84,Red Chert,8
+84,Gray Chert,3
+84,Red/White Chert,6
+84,Yellow Chert,5
+84,Dacite,5
+84,Petrified Wood,9
+85,White Chert,6
+85,Red Chert,9
+85,Gray Chert,3
+85,Red/White Chert,3
+85,Yellow Chert,2
+85,Petrified Wood,5
+86,White Chert,9
+86,Red Chert,4
+86,Gray Chert,5
+86,Red/White Chert,4
+86,Yellow Chert,5
+86,Petrified Wood,8
+87,White Chert,4
+87,Red Chert,5
+87,Gray Chert,4
+87,Red/White Chert,3
+87,Yellow Chert,8
+87,Petrified Wood,4
+88,White Chert,7
+88,Red Chert,8
+88,Gray Chert,6
+88,Red/White Chert,3
+88,Yellow Chert,4
+88,Dacite,2
+88,Petrified Wood,8
+89,White Chert,5
+89,Red Chert,4
+89,Gray Chert,8
+89,Red/White Chert,3
+89,Yellow Chert,6
+89,Petrified Wood,5
+90,White Chert,5
+90,Red Chert,3
+90,Rhyolite,2
+90,Petrified Wood,6
+91,White Chert,6
+91,Red Chert,9
+91,Gray Chert,9
+91,Petrified Wood,5
+92,White Chert,9
+92,Red Chert,3
+92,Petrified Wood,13
+93,White Chert,7
+93,Red Chert,11
+93,Gray Chert,7
+93,Red/White Chert,4
+93,Petrified Wood,6
+94,White Chert,10
+94,Red Chert,4
+94,Gray Chert,4
+94,Petrified Wood,4
+95,White Chert,7
+95,Red Chert,3
+95,Gray Chert,3
+95,Red/White Chert,4
+95,Yellow Chert,3
+96,White Chert,9
+96,Obsidian,10
+97,White Chert,14
+97,Obsidian,7
+98,White Chert,11
+98,Dacite,2
+98,Obsidian,10
+99,White Chert,9
+99,Red Chert,2
+99,Gray Chert,2
+99,Obsidian,8
+100,White Chert,13
+100,Dacite,2
+100,Obsidian,9
+101,White Chert,12
+101,Obsidian,6
+102,White Chert,6
+102,Gray Chert,3
+102,Dacite,4
+102,Obsidian,9
+103,White Chert,9
+103,Obsidian,9
+104,White Chert,11
+104,Obsidian,6
+105,White Chert,6
+105,Obsidian,7
+106,White Chert,10
+106,Obsidian,6
+106,Petrified Wood,2
+107,White Chert,5
+107,Obsidian,5
+108,White Chert,7
+108,Obsidian,4
+109,White Chert,6
+109,Red Chert,5
+109,Red/White Chert,3
+109,Dacite,4
+109,Obsidian,5
+110,White Chert,4
+110,Red Chert,3
+110,Red/White Chert,4
+110,Obsidian,7
+111,White Chert,7
+111,Red/White Chert,2
+111,Dacite,3
+111,Obsidian,5
+112,White Chert,9
+112,Obsidian,5
+113,White Chert,5
+113,Obsidian,4
+114,White Chert,7
+114,Obsidian,8
+115,White Chert,8
+115,Obsidian,4
+116,White Chert,5
+116,Gray Chert,3
+116,Obsidian,5
+117,White Chert,7
+117,Gray Chert,7
+117,Red/White Chert,5
+117,Petrified Wood,8
+118,White Chert,5
+118,Red Chert,4
+118,Gray Chert,6
+118,Red/White Chert,4
+118,Yellow Chert,3
+118,Petrified Wood,11
+119,White Chert,4
+119,Red Chert,8
+119,Gray Chert,3
+119,Red/White Chert,6
+119,Rhyolite,3
+119,Petrified Wood,7
+120,White Chert,9
+120,Dacite,5
+120,Obsidian,6
+121,White Chert,11
+121,Obsidian,5
+122,White Chert,7
+122,Obsidian,9
+123,White Chert,13
+123,Dacite,2
+123,Obsidian,7
+124,White Chert,12
+124,Obsidian,4
+125,White Chert,8
+125,Gray Chert,2
+125,Obsidian,6
+126,White Chert,8
+126,Obsidian,5
+127,White Chert,9
+127,Obsidian,6
+128,White Chert,14
+128,Dacite,5
+128,Obsidian,9
+129,White Chert,6
+129,Obsidian,11
+130,White Chert,8
+130,Red Chert,8
+130,Gray Chert,4
+130,Red/White Chert,7
+130,Yellow Chert,4
+130,Petrified Wood,6
+131,White Chert,10
+131,Obsidian,8
+132,White Chert,9
+132,Obsidian,3
+133,White Chert,10
+133,Obsidian,8
+134,White Chert,8
+134,Dacite,3
+134,Obsidian,6
+135,White Chert,7
+135,Red Chert,4
+135,Gray Chert,8
+135,Red/White Chert,5
+135,Yellow Chert,6
+135,Petrified Wood,4
+136,White Chert,4
+136,Red Chert,4
+136,Gray Chert,8
+136,Red/White Chert,3
+136,Yellow Chert,5
+136,Petrified Wood,3
+137,White Chert,6
+137,Red Chert,2
+137,Red/White Chert,6
+137,Petrified Wood,9
+138,White Chert,4
+138,Red Chert,3
+138,Gray Chert,8
+138,Red/White Chert,4
+138,Yellow Chert,4
+138,Petrified Wood,3
+139,White Chert,5
+139,Red Chert,7
+139,Gray Chert,3
+139,Yellow Chert,2
+139,Petrified Wood,9
+140,White Chert,9
+140,Red Chert,3
+140,Gray Chert,7
+140,Red/White Chert,4
+140,Yellow Chert,7
+140,Petrified Wood,3
+141,White Chert,4
+141,Red Chert,11
+141,Gray Chert,4
+141,Red/White Chert,4
+141,Yellow Chert,3
+141,Petrified Wood,8
+142,White Chert,8
+142,Red Chert,2
+142,Gray Chert,8
+142,Red/White Chert,5
+142,Yellow Chert,9
+142,Petrified Wood,9
+143,White Chert,3
+143,Red Chert,5
+143,Gray Chert,9
+143,Red/White Chert,3
+143,Yellow Chert,4
+143,Petrified Wood,7
+144,White Chert,5
+144,Red Chert,8
+144,Gray Chert,3
+144,Red/White Chert,6
+144,Yellow Chert,6
+144,Petrified Wood,4
+145,White Chert,17
+145,Obsidian,11
+146,White Chert,6
+146,Red Chert,2
+146,Gray Chert,9
+146,Red/White Chert,4
+146,Yellow Chert,3
+146,Petrified Wood,8
+147,White Chert,8
+147,Red Chert,8
+147,Gray Chert,2
+147,Red/White Chert,5
+147,Petrified Wood,6
+148,White Chert,3
+148,Red Chert,9
+148,Gray Chert,5
+148,Red/White Chert,5
+148,Petrified Wood,8
+149,White Chert,9
+149,Red Chert,3
+149,Gray Chert,3
+149,Red/White Chert,3
+149,Petrified Wood,3
+150,White Chert,6
+150,Red Chert,3
+150,Gray Chert,5
+150,Red/White Chert,9
+150,Petrified Wood,2
+151,White Chert,8
+151,Red Chert,4
+151,Gray Chert,5
+151,Red/White Chert,3
+151,Petrified Wood,9
+152,White Chert,3
+152,Red Chert,7
+152,Gray Chert,5
+152,Red/White Chert,6
+152,Petrified Wood,6
+153,White Chert,5
+153,Red Chert,3
+153,Gray Chert,2
+153,Red/White Chert,3
+153,Petrified Wood,8
+154,White Chert,5
+154,Red Chert,5
+154,Gray Chert,3
+154,Petrified Wood,4
+155,White Chert,3
+155,Red Chert,5
+155,Gray Chert,3
+155,Red/White Chert,6
+155,Yellow Chert,3
+155,Petrified Wood,2
+156,White Chert,5
+156,Red Chert,3
+156,Gray Chert,8
+156,Red/White Chert,9
+156,Petrified Wood,3
+157,Red Chert,6
+157,Gray Chert,7
+157,Red/White Chert,8
+157,Yellow Chert,3
+157,Petrified Wood,9
+158,White Chert,4
+158,Red Chert,8
+158,Gray Chert,2
+158,Red/White Chert,1
+158,Yellow Chert,1
+158,Petrified Wood,5
+159,White Chert,9
+159,Red Chert,3
+159,Petrified Wood,12
+160,White Chert,26
+160,Red Chert,8
+161,White Chert,11
+161,Red Chert,6
+161,Gray Chert,6
+161,Red/White Chert,8
+161,Yellow Chert,3
+161,Dacite,2
+161,Obsidian,9
+162,White Chert,4
+162,Red Chert,8
+162,Gray Chert,9
+162,Obsidian,3
+163,White Chert,9
+163,Red Chert,7
+163,Gray Chert,5
+163,Chinle Chert,2
+163,Obsidian,4
+163,Petrified Wood,2
+164,White Chert,6
+164,Gray Chert,4
+164,Red/White Chert,2
+164,Yellow Chert,4
+164,Obsidian,3
+165,White Chert,8
+165,Red Chert,5
+165,Red/White Chert,3
+165,Yellow Chert,4
+165,Chinle Chert,5
+165,Rhyolite,2
+166,White Chert,9
+166,Gray Chert,6
+166,Dacite,3
+166,Obsidian,5
+167,White Chert,12
+167,Gray Chert,11
+167,Obsidian,7
+168,White Chert,19
+168,Red Chert,7
+168,Gray Chert,13
+168,Red/White Chert,9
+168,Dacite,11
+168,Obsidian,9
+169,White Chert,22
+169,Red Chert,3
+169,Gray Chert,5
+169,Red/White Chert,7
+169,Petrified Wood,6
+170,White Chert,12
+170,Dacite,7
+170,Obsidian,5
+170,Petrified Wood,3
+171,White Chert,7
+171,Gray Chert,5
+171,Red/White Chert,4
+171,Dacite,4
+171,Obsidian,6
+172,White Chert,13
+172,Red Chert,5
+172,Gray Chert,7
+172,Red/White Chert,4
+172,Obsidian,11
+173,White Chert,16
+173,Obsidian,6
+173,Petrified Wood,11
+174,White Chert,10
+174,Red Chert,4
+174,Red/White Chert,7
+174,Chinle Chert,4
+174,Obsidian,7
+174,Petrified Wood,9
+175,White Chert,7
+175,Gray Chert,3
+175,Yellow Chert,2
+175,Dacite,3
+175,Obsidian,6
+175,Petrified Wood,3
+176,White Chert,5
+176,Red Chert,5
+176,Gray Chert,3
+176,Red/White Chert,4
+176,Yellow Chert,5
+176,Chinle Chert,5
+176,Obsidian,4
+177,White Chert,4
+177,Red Chert,7
+177,Gray Chert,3
+177,Red/White Chert,5
+177,Yellow Chert,8
+177,Dacite,3
+177,Chinle Chert,9
+177,Rhyolite,2
+177,Obsidian,6
+177,Petrified Wood,3
+178,White Chert,9
+178,Red Chert,3
+178,Gray Chert,4
+178,Red/White Chert,4
+178,Yellow Chert,2
+178,Chinle Chert,7
+178,Obsidian,7
+179,White Chert,2
+179,Red Chert,4
+179,Red/White Chert,2
+179,Yellow Chert,1
+179,Dacite,2
+179,Obsidian,6
+179,Petrified Wood,2
+180,White Chert,18
+180,Red Chert,9
+180,Gray Chert,4
+180,Dacite,5
+180,Obsidian,3
+181,White Chert,2
+181,Obsidian,3
+182,White Chert,17
+182,Dacite,4
+182,Obsidian,5
+183,White Chert,6
+183,Gray Chert,9
+184,White Chert,7
+184,Dacite,5
+184,Obsidian,7
+185,White Chert,9
+185,Red Chert,3
+185,Red/White Chert,2
+185,Dacite,4
+185,Obsidian,8
+186,White Chert,11
+186,Red Chert,3
+186,Red/White Chert,4
+186,Obsidian,10
+187,White Chert,16
+187,Obsidian,5
+188,White Chert,7
+188,Red Chert,2
+188,Dacite,2
+188,Obsidian,11
+188,Petrified Wood,6
+189,White Chert,14
+189,Obsidian,16
+190,White Chert,12
+190,Red/White Chert,5
+190,Obsidian,10
+191,Yellow Chert,4
+191,Dacite,5
+191,Chinle Chert,4
+191,Obsidian,7
+192,White Chert,9
+192,Red Chert,6
+192,Gray Chert,8
+192,Red/White Chert,9
+192,Yellow Chert,11
+192,Petrified Wood,5
+193,White Chert,8
+193,Red Chert,3
+193,Dacite,3
+193,Chinle Chert,5
+193,Rhyolite,6
+193,Obsidian,10
+194,White Chert,7
+194,Red Chert,2
+194,Red/White Chert,1
+194,Chinle Chert,7
+194,Rhyolite,4
+194,Obsidian,18
+195,White Chert,9
+195,Red Chert,2
+195,Gray Chert,5
+195,Dacite,5
+195,Obsidian,9
+196,White Chert,7
+196,Red Chert,1
+196,Gray Chert,3
+196,Obsidian,6
+197,White Chert,11
+197,Red Chert,4
+197,Gray Chert,6
+197,Obsidian,7
+198,White Chert,9
+198,Red Chert,7
+198,Gray Chert,4
+198,Red/White Chert,5
+198,Obsidian,9
+199,White Chert,3
+199,Red Chert,9
+199,Gray Chert,7
+199,Red/White Chert,5
+199,Yellow Chert,4
+199,Chinle Chert,3
+199,Obsidian,2
+200,White Chert,3
+200,Red Chert,7
+200,Gray Chert,3
+200,Red/White Chert,9
+200,Yellow Chert,3
+200,Petrified Wood,3
+201,White Chert,3
+201,Red Chert,9
+201,Red/White Chert,11
+201,Yellow Chert,4
+201,Petrified Wood,3
+202,White Chert,20
+202,Red Chert,7
+203,White Chert,28
+203,Red Chert,4
+204,White Chert,31
+204,Red Chert,3
+205,White Chert,39
+205,Red Chert,4
+206,White Chert,19
+206,Red Chert,4
+206,Gray Chert,8
+206,Red/White Chert,3
+206,Obsidian,8
+207,White Chert,9
+207,Red Chert,3
+207,Gray Chert,3
+207,Red/White Chert,4
+207,Obsidian,9
+207,Petrified Wood,4
+208,White Chert,12
+208,Obsidian,8
+209,White Chert,6
+209,Red Chert,3
+209,Yellow Chert,3
+209,Chinle Chert,5
+209,Obsidian,11
+209,Petrified Wood,4
+210,White Chert,12
+210,Red Chert,14
+210,Obsidian,6
+211,White Chert,6
+211,Gray Chert,3
+211,Petrified Wood,3
+212,White Chert,6
+212,Red Chert,2
+212,Gray Chert,4
+212,Red/White Chert,3
+213,White Chert,6
+213,Red Chert,3
+213,Gray Chert,3
+213,Red/White Chert,2
+213,Yellow Chert,6
+213,Dacite,4
+213,Obsidian,7
+214,White Chert,9
+214,Red Chert,4
+214,Gray Chert,3
+214,Red/White Chert,7
+214,Dacite,2
+214,Obsidian,8
+215,White Chert,5
+215,Red Chert,8
+215,Gray Chert,8
+215,Obsidian,10
+216,White Chert,9
+216,Red Chert,5
+216,Gray Chert,3
+216,Red/White Chert,7
+216,Yellow Chert,7
+216,Chinle Chert,6
+216,Rhyolite,4
+216,Obsidian,9
+216,Petrified Wood,2
+217,White Chert,7
+217,Gray Chert,3
+217,Red/White Chert,9
+217,Yellow Chert,11
+217,Chinle Chert,8
+217,Obsidian,5
+218,White Chert,14
+218,Obsidian,8
+219,White Chert,6
+219,Red Chert,3
+219,Obsidian,9
+220,White Chert,9
+220,Red Chert,2
+220,Gray Chert,2
+220,Obsidian,4
+221,White Chert,11
+222,Red Chert,8
+222,Gray Chert,2
+222,Red/White Chert,9
+222,Rhyolite,3
+222,Petrified Wood,3
+223,White Chert,9
+223,Red Chert,5
+223,Obsidian,7
+224,White Chert,4
+224,Red Chert,9
+224,Obsidian,7
+224,Petrified Wood,4
+225,White Chert,6
+225,Red Chert,9
+225,Gray Chert,8
+225,Yellow Chert,3
+225,Petrified Wood,3
+226,White Chert,5
+226,Red Chert,11
+226,Red/White Chert,4
+226,Obsidian,7
+227,White Chert,4
+227,Red Chert,8
+227,Gray Chert,2
+227,Red/White Chert,5
+227,Obsidian,4
+228,White Chert,6
+228,Red Chert,13
+228,Gray Chert,5
+228,Red/White Chert,4
+228,Yellow Chert,6
+228,Dacite,3
+228,Rhyolite,3
+228,Obsidian,6
+228,Petrified Wood,4
+229,White Chert,7
+229,Red Chert,4
+229,Gray Chert,6
+229,Red/White Chert,4
+229,Petrified Wood,5
+230,White Chert,11
+230,Dacite,7
+230,Obsidian,8
+231,White Chert,7
+231,Red Chert,7
+231,Gray Chert,4
+231,Red/White Chert,8
+231,Yellow Chert,3
+231,Dacite,5
+231,Obsidian,6
+231,Petrified Wood,4
+232,White Chert,3
+232,Red Chert,11
+232,Gray Chert,3
+232,Red/White Chert,8
+232,Yellow Chert,5
+232,Chinle Chert,8
+232,Rhyolite,6
+233,White Chert,4
+233,Red Chert,10
+233,Gray Chert,5
+233,Red/White Chert,9
+233,Yellow Chert,3
+233,Chinle Chert,10
+233,Rhyolite,4
+233,Petrified Wood,3
+234,White Chert,10
+234,Red Chert,4
+234,Gray Chert,8
+234,Dacite,6
+234,Obsidian,9
+235,White Chert,8
+235,Petrified Wood,6
+236,White Chert,12
+236,Obsidian,9
+237,White Chert,10
+237,Red Chert,5
+237,Yellow Chert,4
+237,Chinle Chert,3
+237,Obsidian,6
+238,White Chert,9
+238,Red Chert,7
+238,Obsidian,22
+239,White Chert,6
+239,Gray Chert,5
+239,Obsidian,12
+240,White Chert,6
+240,Obsidian,8
+241,White Chert,10
+241,Red Chert,8
+241,Obsidian,6
+242,White Chert,6
+242,Red Chert,7
+242,Gray Chert,3
+242,Red/White Chert,7
+243,White Chert,8
+243,Red Chert,6
+243,Red/White Chert,3
+243,Obsidian,8
+244,White Chert,6
+244,Red Chert,3
+244,Dacite,4
+244,Obsidian,8
+245,White Chert,11
+245,Gray Chert,6
+246,White Chert,9
+246,Obsidian,7
+247,White Chert,5
+247,Chinle Chert,9
+248,White Chert,4
+248,Red Chert,5
+248,Chinle Chert,9
+248,Rhyolite,3
+249,White Chert,9
+249,Red Chert,4
+249,Gray Chert,3
+249,Red/White Chert,3
+249,Obsidian,9
+249,Petrified Wood,3
+250,White Chert,6
+250,Red Chert,7
+250,Gray Chert,6
+250,Dacite,3
+250,Obsidian,6
+250,Petrified Wood,3
+251,White Chert,9
+251,Red Chert,3
+251,Red/White Chert,4
+251,Obsidian,6
+252,White Chert,19
+253,White Chert,14
+253,Petrified Wood,7
+254,White Chert,22
+254,Red/White Chert,6
+254,Petrified Wood,9
+255,White Chert,6
+255,Red Chert,5
+255,Gray Chert,3
+255,Red/White Chert,5
+255,Yellow Chert,4
+255,Dacite,2
+255,Obsidian,9
+255,Petrified Wood,9
+256,White Chert,23
+257,White Chert,8
+257,Red Chert,4
+257,Gray Chert,5
+257,Red/White Chert,3
+257,Yellow Chert,4
+257,Chinle Chert,4
+258,White Chert,17
+258,Red Chert,4
+258,Red/White Chert,4
+258,Petrified Wood,6
+259,White Chert,27
+259,Red Chert,4
+259,Gray Chert,3
+259,Red/White Chert,3
+259,Petrified Wood,5
+260,White Chert,8
+260,Obsidian,7
+261,White Chert,4
+261,Dacite,4
+261,Obsidian,6
+262,White Chert,7
+262,Red Chert,2
+262,Dacite,4
+262,Obsidian,10
+263,White Chert,8
+263,Red Chert,4
+263,Gray Chert,3
+263,Red/White Chert,3
+263,Yellow Chert,2
+263,Obsidian,7
+264,White Chert,9
+264,Obsidian,2
+265,White Chert,3
+265,Red Chert,4
+265,Gray Chert,3
+265,Obsidian,4
+265,Petrified Wood,2
+266,White Chert,22
+266,Red Chert,4
+266,Gray Chert,6
+266,Red/White Chert,5
+266,Yellow Chert,6
+266,Dacite,3
+266,Obsidian,11
+266,Petrified Wood,4
+267,White Chert,17
+267,Red Chert,4
+267,Gray Chert,9
+267,Obsidian,4
+268,White Chert,23
+269,Dacite,4
+269,Obsidian,9
+270,White Chert,2
+270,Dacite,3
+270,Obsidian,8
+271,Dacite,2
+271,Obsidian,11
+272,White Chert,3
+272,Obsidian,10
+273,Dacite,4
+273,Obsidian,7
+274,White Chert,3
+274,Dacite,5
+274,Obsidian,13
+275,Dacite,3
+275,Obsidian,11
+276,Gray Chert,3
+276,Obsidian,8
+277,Obsidian,12
+278,Obsidian,10
+279,Yellow Chert,2
+279,Obsidian,9
+280,Obsidian,6
+281,Yellow Chert,3
+281,Obsidian,9
+282,Yellow Chert,2
+282,Dacite,4
+282,Obsidian,13
+283,Obsidian,11
+284,Obsidian,13
+285,Obsidian,7
+286,Yellow Chert,2
+286,Dacite,2
+286,Obsidian,19
+287,Obsidian,10
+288,Red Chert,2
+288,Yellow Chert,2
+288,Obsidian,12
+289,Obsidian,14
+290,Dacite,6
+290,Obsidian,10
+291,Obsidian,8
+292,Obsidian,11
+293,Dacite,3
+293,Obsidian,9
+294,Yellow Chert,3
+294,Obsidian,17

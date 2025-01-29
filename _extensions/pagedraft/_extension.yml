@@ -1,0 +1,21 @@
+title: Pagedraft
+author: kbvernon
+version: 1.0.0
+quarto-required: ">=1.6.0"
+contributes:
+  formats:
+    html:
+      csl: apa.csl
+      date-modified-title: "Date Modified"
+      fontsize: 11.5pt
+      include-after-body:
+        - move-tbl-caption.html
+        - paged.polyfill.min.html
+      mainfont: Georgia
+      page-layout: custom
+      target-journal-title: "Target Journals"
+      template-partials:
+        - title-metadata.html        
+      theme: paged.scss
+      title-block-style: plain
+      toc: false

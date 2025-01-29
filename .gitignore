@@ -1,0 +1,14 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.Rbuildignore
+*.Rproj
+*.gpkg
+*.tif
+
+/.quarto/
+/_misc/
+
+/manuscript/manuscript_files
+/manuscript/manuscript.html

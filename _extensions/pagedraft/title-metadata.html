@@ -1,0 +1,95 @@
+$if(by-affiliation/first)$
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">$labels.authors$</div>
+  <div class="quarto-title-meta-heading">$labels.affiliations$</div>
+
+  $for(by-author)$
+  <div class="quarto-title-meta-contents">
+    <p class="author">$_title-meta-author.html()$</p>
+  </div>
+  <div class="quarto-title-meta-contents">
+    $for(by-author.affiliations)$
+    <p class="affiliation">
+      $if(it.url)$
+      <a href="$it.url$">
+        $endif$
+        $it.name$
+        $if(it.url)$
+      </a>
+      $endif$
+    </p>
+    $endfor$
+  </div>
+  $endfor$
+</div>
+$endif$
+
+<div class="quarto-title-meta-article">
+  $if(by-affiliation)$
+  $elseif(by-author)$
+  <div>
+    <div class="quarto-title-meta-heading">$labels.authors$</div>
+    <div class="quarto-title-meta-contents">
+      $for(by-author)$
+      <p>$_title-meta-author.html()$</p>
+      $endfor$
+    </div>
+  </div>
+  $endif$
+
+  $if(date)$
+  <div>
+    <div class="quarto-title-meta-heading">$labels.published$</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">$date$</p>
+    </div>
+  </div>
+  $endif$
+
+  $if(date-modified)$
+  <div class="quarto-title-meta-contents">
+    <p class="date-modified">
+      <span class="block-title">$date-modified-title$: </span>
+      $date-modified$
+    </p>
+  </div>
+  $endif$
+
+  $if(doi)$
+  <div class="quarto-title-meta-contents">
+    <div class="quarto-title-meta-heading">$labels.doi$</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/$doi$">$doi$</a>
+      </p>
+    </div>
+  </div>
+  $endif$
+
+  $if(abstract)$
+  <div class="quarto-title-meta-contents">
+    <div class="abstract">
+      <div class="block-title">$labels.abstract$</div>
+      $abstract$
+    </div>
+  </div>
+  $endif$
+
+  $if(keywords)$
+  <div class="quarto-title-meta-contents">
+    <p class="keywords">
+      <span class="block-title">$labels.keywords$: </span>
+      $for(keywords)$$it$$sep$, $endfor$
+    </p>
+  </div>
+  $endif$
+
+  $if(target-journal)$
+  <div class="quarto-title-meta-contents">
+    <p class="target-journal">
+      <span class="block-title">$target-journal-title$: </span>
+      $for(target-journal)$$it$$sep$, $endfor$
+    </p>
+  </div>
+  $endif$
+</div>
