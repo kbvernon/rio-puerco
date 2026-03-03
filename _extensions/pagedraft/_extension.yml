@@ -10,6 +10,7 @@ contributes:
       fontsize: 11.5pt
       include-after-body:
         - move-tbl-caption.html
+      mainfont: Georgia
       page-layout: custom
       target-journal-title: "Target Journals"
       template-partials:

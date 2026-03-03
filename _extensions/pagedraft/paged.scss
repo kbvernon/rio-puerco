@@ -7,10 +7,10 @@ $figure-caption-color: $gray-2;
 $float-font-size: 0.9rem;
 $h1-font-size: 1.45rem;
 $link-color: #3B98AB;
-$page-margin-bottom: 1in;
-$page-margin-left: 1in;
-$page-margin-right: 1in;
-$page-margin-top: 1in;
+$page-margin-bottom: 0.8in;
+$page-margin-left: 0.8in;
+$page-margin-right: 0.8in;
+$page-margin-top: 0.8in;
 $page-orientation: portrait;
 $page-size: letter;
 $paragraph-indent: 0.25in;
@@ -21,6 +21,7 @@ $title-affiliation-font-size: 0.85rem;
 $viewer-background-color: whitesmoke;
 $viewer-pages-spacing: 10px;
 $viewer-shadow-color: $gray-3;
+$font-size-root: 11.5pt;
 
 /*-- scss:rules --*/
 
@@ -239,6 +240,19 @@ pagedjs-ignore {
   main.content,
   main.content section.level2:last-child {
     break-after: avoid;
+  }
+
+  /*
+    Without paged.js, Chrome scales wide Bootstrap content to fit the paper,
+    making text very small. Setting an explicit width equal to the printable
+    area prevents that scaling so Chrome renders at true font size.
+  */
+  html {
+    font-size: $font-size-root;
+  }
+
+  body {
+    font-size: $font-size-root;
   }
 }
 
