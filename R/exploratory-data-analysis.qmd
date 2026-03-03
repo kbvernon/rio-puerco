@@ -24,7 +24,6 @@ execute:
 ---
 
 ```{css, echo = FALSE}
-
 table {
   caption-side: top;
 }
@@ -70,7 +69,6 @@ table.two-head thead tr:nth-child(2) th {
   top: 40px !important;
   background-color: white !important;
 }
-
 ```
 
 ## Introduction
@@ -91,7 +89,7 @@ US Southwest, notably seriation.
 ## R Preamble
 
 ```{r}
-
+#| label: preamble-libraries
 library(broom)
 library(ca)
 library(colorspace)
@@ -112,22 +110,20 @@ library(slider)
 library(terra)
 library(tidyterra)
 library(tidyverse)
-
 ```
 
 Set seed
 
 ```{r}
-
-set.seed(1701) # USS Enterprise NCC-1701
-
+#| label: preamble-rng
+set.seed(1701) # USS Enterprise NCC-1701 🖖
 ```
 
 Some ggplot defaults
 
 ```{r}
+#| label: preamble-plot-defaults
 #| code-fold: true
-
 # region key
 region_colors <- c(
   "es" = "#ED7D3A",
@@ -206,13 +202,12 @@ prepare_image <- function(x, dx = 2, dy = 30, color = "white") {
 
   image_write(img, path = x)
 }
-
 ```
 
 ## Data
 
 ```{r}
-
+#| label: data-load
 gpkg <- here("data", "rio-puerco.gpkg")
 
 survey_area <- read_sf(gpkg, "survey")
@@ -253,13 +248,12 @@ places <- read_sf(gpkg, "places")
 elevation <- here("data", "elevation.tif") |> rast()
 
 climate <- read_sf(gpkg, "climate")
-
 ```
 
 Save attribute data without spatial locations.
 
 ```{r}
-
+#| label: data-save-attributes
 sites |>
   st_drop_geometry() |>
   write_csv(here("data", "rp-sites.csv"))
@@ -267,14 +261,12 @@ sites |>
 ceramics |> write_csv(here("data", "rp-ceramics.csv"))
 
 lithics |> write_csv(here("data", "rp-lithics.csv"))
-
 ```
 
 ```{r}
+#| label: overview-map
 #| code-fold: true
-
 # labels -----------------------------------------------------------------------
-
 survey_area <- survey_area |>
   mutate(name = "Rio Puerco\nSurvey Area") |>
   select(name)
@@ -282,16 +274,16 @@ survey_area <- survey_area |>
 lbls <- places |>
   bind_rows(survey_area) |>
   mutate(
-    xmin = map_dbl(geom, \(x){
+    xmin = map_dbl(geom, \(x) {
       st_bbox(x)[["xmin"]]
     }),
-    xmax = map_dbl(geom, \(x){
+    xmax = map_dbl(geom, \(x) {
       st_bbox(x)[["xmax"]]
     }),
-    ymin = map_dbl(geom, \(x){
+    ymin = map_dbl(geom, \(x) {
       st_bbox(x)[["ymin"]]
     }),
-    ymax = map_dbl(geom, \(x){
+    ymax = map_dbl(geom, \(x) {
       st_bbox(x)[["ymax"]]
     }),
     x = case_when(
@@ -314,14 +306,14 @@ lbls <- places |>
   select(name, x, y, hjust)
 
 # basemap for region -----------------------------------------------------------
-
 get_basemap <- function(
-    x,
-    map = "physical",
-    size = c(16000, 9000),
-    dpi = 300,
-    imageSR = 4326,
-    path) {
+  x,
+  map = "physical",
+  size = c(16000, 9000),
+  dpi = 300,
+  imageSR = 4326,
+  path
+) {
   x <- st_bbox(x)
 
   old_ratio <- (x[["xmax"]] - x[["xmin"]]) / (x[["ymax"]] - x[["ymin"]])
@@ -382,12 +374,13 @@ if (file.exists(fn)) {
 }
 
 # regional map -----------------------------------------------------------------
-
 gg_region <- ggplot() +
   annotation_raster(
     basemap,
-    bb8[["xmin"]], bb8[["xmax"]],
-    bb8[["ymin"]], bb8[["ymax"]]
+    bb8[["xmin"]],
+    bb8[["xmax"]],
+    bb8[["ymin"]],
+    bb8[["ymax"]]
   ) +
   geom_sf(
     data = st_as_sfc(bb8),
@@ -440,7 +433,6 @@ gg_region <- ggplot() +
   )
 
 # local map --------------------------------------------------------------------
-
 bb8 <- survey_area |>
   st_buffer(1000) |>
   st_bbox()
@@ -557,7 +549,6 @@ gg_local <- ggplot() +
   )
 
 # combine and save -------------------------------------------------------------
-
 fn <- here("figures", "overview-map.png")
 
 ggsave(
@@ -572,7 +563,6 @@ ggsave(
 prepare_image(fn)
 
 remove(lbls, get_basemap, basemap, bb8, dx, dy, cover, gg_region, gg_local, fn)
-
 ```
 
 ::: {#fig-overview}
@@ -588,7 +578,7 @@ location of survey area in the wider region (right).
 #### **What does the combined ceramic assemblage look like in each region?**
 
 ```{r}
-
+#| label: analysis-cer-regions
 type_distributions <- ceramics |>
   group_by(region, ware, type) |>
   summarize(count = sum(count)) |>
@@ -597,8 +587,8 @@ type_distributions <- ceramics |>
 ```
 
 ```{r}
+#| label: analysis-cer-regions-tbl
 #| code-fold: true
-
 ceramic_dates <- ceramics |>
   group_by(type) |>
   slice(1) |>
@@ -635,7 +625,6 @@ remove(tbl)
 tbl_region_ceramics |>
   kable_styling(bootstrap_options = c("hover", "condensed")) |>
   scroll_box(height = "450px")
-
 ```
 
 #### **How abundant are decorated ceramics relative to undecorated ceramics?**
@@ -649,7 +638,7 @@ where $d_{i}$ and $u_{i}$ are the number of decorated and undecorated ceramics
 at $i$.
 
 ```{r}
-
+#| label: analysis-cer-abundance
 abundance <- ceramics |>
   select(site_id, region, use, count) |>
   group_by(site_id, use) |>
@@ -661,12 +650,11 @@ abundance <- ceramics |>
   ungroup() |>
   mutate(ratio = decorated / utility) |>
   select(site_id, region, ratio)
-
 ```
 
 ```{r}
+#| label: analysis-cer-abundance-tbl
 #| code-fold: true
-
 lbls <- tibble(
   y = 0.98,
   label = unname(region_labels),
@@ -725,7 +713,6 @@ ggsave(
 prepare_image(fn)
 
 remove(lbls, gg, fn)
-
 ```
 
 ::: {#fig-abundance}
@@ -741,7 +728,7 @@ We estimate the relationship using a log-log linear model, with site size
 measured in units of area, specifically m$^2$.
 
 ```{r}
-
+#| label: analysis-cer-abundance-mod
 abundance <- abundance |>
   left_join(
     sites |> st_drop_geometry() |> select(site_id, mound_area, kiva_area),
@@ -758,8 +745,8 @@ abundance_model <- lm(
 ```
 
 ```{r}
+#| label: analysis-cer-abundance-mod-tbl
 #| code-fold: true
-
 tbl <- abundance_model |>
   tidy() |>
   rename_with(str_replace, pattern = "\\.", replacement = " ") |>
@@ -768,7 +755,7 @@ tbl <- abundance_model |>
     "t Value" = Statistic,
     "p Value" = "P Value"
   ) |>
-  mutate(across(2:5, \(x){
+  mutate(across(2:5, \(x) {
     round(x, 4)
   }))
 
@@ -782,14 +769,13 @@ tbl_regression |>
     full_width = FALSE,
     position = "left"
   )
-
 ```
 
 Here is the shape of that dependence.
 
 ```{r}
+#| label: analysis-cer-abundance-mod-fig
 #| code-fold: true
-
 site_area <- with(
   abundance,
   seq(min(site_area), max(site_area), length = 100)
@@ -812,7 +798,9 @@ gg <- ggplot() +
     name = NULL,
     values = region_colors,
     labels = paste(
-      "<span style='color: ", darken(region_colors, 0.2), "'>",
+      "<span style='color: ",
+      darken(region_colors, 0.2),
+      "'>",
       region_labels,
       "</span>"
     )
@@ -856,7 +844,6 @@ ggsave(
 prepare_image(fn)
 
 remove(dependence, gg, fn)
-
 ```
 
 ::: {#fig-abundance-dependence}
@@ -870,15 +857,14 @@ the x and y axes both have log scales.
 And here are some linear model diagnostics.
 
 ```{r}
+#| label: analysis-cer-abundance-mod-check
 #| fig-align: center
 #| out-width: 85%
-
 check_model(
   abundance_model,
   check = c("qq", "linearity", "homogeneity", "outliers"),
   detrend = FALSE
 )
-
 ```
 
 Looks like there's some non-linearity and heteroskedasticity in this model. This
@@ -893,17 +879,16 @@ each group while controlling for mound area. The reference group in this model
 is Elk Springs.
 
 ```{r}
-
+#| label: analysis-cer-abundance-regions-mod
 regional_abundance_model <- lm(
   log(ratio) ~ log(site_area) + region,
   data = abundance
 )
-
 ```
 
 ```{r}
+#| label: analysis-cer-abundance-regions-mod-tbl
 #| code-fold: true
-
 regional_abundance_model |>
   tidy() |>
   mutate(
@@ -920,7 +905,7 @@ regional_abundance_model |>
     "t Value" = Statistic,
     "p Value" = "P Value"
   ) |>
-  mutate(across(2:5, \(x){
+  mutate(across(2:5, \(x) {
     round(x, 4)
   })) |>
   kbl(
@@ -932,14 +917,13 @@ regional_abundance_model |>
     full_width = FALSE,
     position = "left"
   )
-
 ```
 
 Here is the shape of that dependence.
 
 ```{r}
+#| label: analysis-cer-abundance-regions-mod-fig
 #| code-fold: true
-
 dependence <- predict_response(
   regional_abundance_model,
   terms = list(
@@ -1009,7 +993,6 @@ ggsave(
 prepare_image(fn)
 
 remove(dependence, lbls, gg, fn)
-
 ```
 
 ::: {#fig-regional-abundance-dependence}
@@ -1023,15 +1006,14 @@ Note that the x and y axes both have log scales.
 And the linear model diagnostics.
 
 ```{r}
+#| label: analysis-cer-abundance-regions-mod-check
 #| fig-align: center
 #| out-width: 85%
-
 check_model(
   regional_abundance_model,
   check = c("qq", "linearity", "homogeneity", "outliers"),
   detrend = FALSE
 )
-
 ```
 
 Still quite a bit of non-linearity and heteroskedasticity, but you will notice
@@ -1040,17 +1022,16 @@ that a lot of that has been tamed relative to the simpler model.
 #### **But is the added complexity in the model actually worth it?**
 
 ```{r}
-
+#| label: analysis-anova-mod
 complexity <- anova(
   abundance_model,
   regional_abundance_model
 )
-
 ```
 
 ```{r}
+#| label: analysis-anova-mod-tbl
 #| code-fold: true
-
 complexity |>
   tidy() |>
   rename_with(str_replace, pattern = "\\.", replacement = " ") |>
@@ -1060,10 +1041,10 @@ complexity |>
     "p Value" = "P Value"
   ) |>
   mutate(
-    across(2:7, \(x){
+    across(2:7, \(x) {
       round(x, 4)
     }),
-    across(4:7, \(x){
+    across(4:7, \(x) {
       ifelse(is.na(x), "--", x)
     })
   ) |>
@@ -1077,7 +1058,6 @@ complexity |>
     full_width = FALSE,
     position = "left"
   )
-
 ```
 
 #### **How do sites correspond in terms of their decorated ceramic assemblage?**
@@ -1086,7 +1066,7 @@ This is estimated using correspondence analysis applied to the count matrix of
 decorated ceramic types (rows are sites, columns are ceramic types).
 
 ```{r}
-
+#| label: analysis-cer-correspondence
 count_matrix <- ceramics |>
   filter(use == "decorated") |>
   select(site_id, key, count) |>
@@ -1097,12 +1077,11 @@ count_matrix <- ceramics |>
   )
 
 correspondence <- ca(count_matrix[, -1])
-
 ```
 
 ```{r}
+#| label: analysis-cer-correspondence-fig
 #| code-fold: true
-
 rowcoord <- correspondence[["rowcoord"]]
 colcoord <- correspondence[["colcoord"]]
 
@@ -1220,7 +1199,6 @@ ggsave(
 prepare_image(fn)
 
 remove(col_data, col_labels, gg, fn)
-
 ```
 
 ::: {#fig-correspondence}
@@ -1233,8 +1211,8 @@ Figure shows results of correspondence analysis for first two dimensions.
 Here is a key to help interpret that figure.
 
 ```{r}
+#| label: analysis-cer-correspondence-key
 #| code-fold: true
-
 keys <- ceramics |>
   filter(use == "decorated") |>
   group_by(type) |>
@@ -1253,14 +1231,13 @@ keys |>
   ) |>
   kable_styling(bootstrap_options = "condensed") |>
   scroll_box(height = "450px")
-
 ```
 
 #### **What does the correspondence look like by region?**
 
 ```{r}
+#| label: analysis-cer-correspondence-regions
 #| code-fold: true
-
 gg_regions <- ggplot() +
   geom_hline(
     yintercept = 0,
@@ -1337,7 +1314,6 @@ ggsave(
 prepare_image(fn)
 
 remove(row_data, fn)
-
 ```
 
 ::: {#fig-correspondence-regions}
@@ -1350,7 +1326,7 @@ Figure shows results of correspondence analysis color-coded by region.
 #### **What temporal groups emerge from the correspondence?**
 
 ```{r}
-
+#| label: analysis-cer-correspondence-phases
 # calculate principal coordinates for rows (i.e., sites)
 rowcoord <- correspondence[["rowcoord"]]
 
@@ -1395,12 +1371,11 @@ phases <- tibble(
 )
 
 remove(rowcoord, sv, rpc, k, clusters, phase_centers)
-
 ```
 
 ```{r}
+#| label: analysis-cer-correspondence-phases-fig
 #| code-fold: true
-
 ceramic_counts <- ceramics |>
   group_by(site_id) |>
   summarize(count = sum(count))
@@ -1491,7 +1466,6 @@ ggsave(
 prepare_image(fn)
 
 remove(ceramic_counts, pct)
-
 ```
 
 ::: {#fig-correspondence-groups}
@@ -1502,18 +1476,18 @@ Figure shows groups defined by kmeans applied to correspondence analysis.
 :::
 
 ```{r}
+#| label: analysis-cer-correspondence-phases-fig2
 #| code-fold: true
-
 # combining the previous two figures
-
 gg_regions <- gg_regions + theme(plot.margin = margin(r = 2))
 
-gg_groups <- gg_groups + theme(
-  axis.text.y = element_blank(),
-  axis.ticks.y = element_blank(),
-  axis.title.y = element_blank(),
-  plot.margin = margin(l = 2)
-)
+gg_groups <- gg_groups +
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.title.y = element_blank(),
+    plot.margin = margin(l = 2)
+  )
 
 fn <- here("figures", "correspondence-combined.png")
 
@@ -1528,25 +1502,23 @@ ggsave(
 prepare_image(fn)
 
 remove(gg_regions, gg_groups)
-
 ```
 
 #### **What does the combined ceramic assemblage look like in each time period?**
 
 ```{r}
-
+#| label: analysis-cer-type-distributions
 type_distributions <- phases |>
   select(site_id, phase) |>
   left_join(ceramics, by = "site_id") |>
   group_by(phase, ware, type) |>
   summarize(count = sum(count)) |>
   ungroup()
-
 ```
 
 ```{r}
+#| label: analysis-cer-type-distributions-tbl
 #| code-fold: true
-
 tbl <- type_distributions |>
   pivot_wider(
     names_from = phase,
@@ -1555,7 +1527,11 @@ tbl <- type_distributions |>
   ) |>
   arrange(ware, type) |>
   relocate(
-    `Early PII`, `Late PII`, `Early PIII`, `Middle PIII`, `Late PIII`,
+    `Early PII`,
+    `Late PII`,
+    `Early PIII`,
+    `Middle PIII`,
+    `Late PIII`,
     .after = type
   ) |>
   left_join(ceramic_dates, by = "type") |>
@@ -1599,17 +1575,16 @@ tbl_period_ceramics |>
 #### **What does that correspondence look like geographically?**
 
 ```{r}
-
+#| label: analysis-geo-phases
 site_phases <- sites |>
   left_join(phases, by = "site_id") |>
   select(site_id, region, fnum, phase) |>
   filter(!is.na(phase))
-
 ```
 
 ```{r}
+#| label: analysis-geo-phases-fig
 #| code-fold: true
-
 bb8 <- survey_area |>
   st_buffer(1000) |>
   st_bbox()
@@ -1731,7 +1706,6 @@ ggsave(
 )
 
 remove(bb8, dx, dy, cover, gg, lbls)
-
 ```
 
 ::: {#fig-correspondence-map}
@@ -1752,7 +1726,7 @@ region:
 -   Site `orientation`
 
 ```{r}
-
+#| label: analysis-site-characteristics
 site_characteristics <- sites |>
   st_drop_geometry() |>
   mutate(
@@ -1774,18 +1748,17 @@ site_characteristics <- sites |>
     phase,
     fill = list(area_t = 0, area_m = 0, burn = 0, count = 0)
   )
-
 ```
 
 ```{r}
+#| label: analysis-site-characteristics-tbl
 #| code-fold: true
-
 tbl <- site_characteristics |>
   mutate(
-    across(count:orientation, \(x){
+    across(count:orientation, \(x) {
       round(x, digits = 2)
     }),
-    across(count:orientation, \(x){
+    across(count:orientation, \(x) {
       ifelse(is.na(x), "--", format(x, nsmall = 2))
     }),
     count = gsub(".00", "", count),
@@ -1807,7 +1780,11 @@ tbl <- site_characteristics |>
     values_from = "value"
   ) |>
   relocate(
-    `Early PII`, `Late PII`, `Early PIII`, `Middle PIII`, `Late PIII`,
+    `Early PII`,
+    `Late PII`,
+    `Early PIII`,
+    `Middle PIII`,
+    `Late PIII`,
     .after = region
   ) |>
   mutate(
@@ -1820,10 +1797,14 @@ tbl <- site_characteristics |>
     ),
     characteristic = case_when(
       characteristic == "count" ~ "<strong>A. N Sites</strong>",
-      characteristic == "area_t" ~ "<strong>B. Area</strong><br>[total m&#178;]",
-      characteristic == "area_m" ~ "<strong>C. Area</strong><br>[median m&#178;]",
-      characteristic == "burn" ~ "<strong>D. Burned</strong><br>[mean] (Yes, No)",
-      characteristic == "orientation" ~ "<strong>E. Orientation<br>of Roomblock</strong><br>[median degrees]"
+      characteristic == "area_t" ~
+        "<strong>B. Area</strong><br>[total m&#178;]",
+      characteristic == "area_m" ~
+        "<strong>C. Area</strong><br>[median m&#178;]",
+      characteristic == "burn" ~
+        "<strong>D. Burned</strong><br>[mean] (Yes, No)",
+      characteristic == "orientation" ~
+        "<strong>E. Orientation<br>of Roomblock</strong><br>[median degrees]"
     )
   ) |>
   arrange(i) |>
@@ -1849,8 +1830,8 @@ tbl_site_characteristics |>
 And now for some trigonometry...
 
 ```{r}
+#| label: analysis-site-orientation-fig
 #| code-fold: true
-
 bb8 <- survey_area |>
   st_buffer(1000) |>
   st_bbox()
@@ -1958,7 +1939,9 @@ gg <- ggplot() +
     name = NULL,
     values = region_colors,
     labels = paste(
-      "<span style='color: ", darken(region_colors, 0.2), "'>",
+      "<span style='color: ",
+      darken(region_colors, 0.2),
+      "'>",
       region_labels,
       "</span>"
     )
@@ -1998,7 +1981,6 @@ ggsave(
 prepare_image(fn)
 
 remove(bb8, circles, xy, cover, gg, lbls, fn, r)
-
 ```
 
 ::: {#fig-orientation-map}
@@ -2010,355 +1992,13 @@ circles are positioned so that their centers roughly coincide with the centroid
 of site points for each region and time period.
 :::
 
-<!--
-
-#### **Is orientation driven by cultural affiliation?**
-
-Ceramics frequencies are highly co-linear. Need to rethink this.
-
-```{r}
-
-orientation_matrix <- count_matrix |>
-  left_join(sites |> st_drop_geometry() |> select(site_id, orientation)) |>
-  mutate(
-    orientation = cut(
-      orientation,
-      breaks = seq(0, 360, by = 45),
-      labels = c("NNE", "ENE", "ESE", "SSE", "SSW", "WSW", "WNW", "NNW"),
-      include.lowest = TRUE
-    ),
-    orientation = as.character(orientation),
-    orientation = factor(orientation)
-  ) |>
-  pivot_longer(
-    c(-site_id, -orientation),
-    names_to = "type",
-    values_to = "count"
-  ) |>
-  group_by(site_id) |>
-  mutate(count = count / sum(count)) |>
-  ungroup() |>
-  pivot_wider(
-    id_cols = c(site_id, orientation),
-    names_from = "type",
-    values_from = "count"
-  ) |>
-  select(-site_id)
-
-orientation_lda <- lda(
-  orientation ~ .,
-  data = orientation_matrix
-)
-
-```
-
-```{r}
-#| code-fold: true
-
-gtbl <- orientation_lda[["scaling"]] |>
-  as_tibble(rownames = "type") |>
-  pivot_longer(
-    -type,
-    names_to = "discriminant",
-    values_to = "weight"
-  )
-
-gg <- ggplot(gtbl) +
-  geom_vline(
-    xintercept = 0,
-    color = "grey25",
-    linewidth = 0.2
-  ) +
-  geom_segment(
-    aes(x = 0, xend = weight, y = type, yend = type)
-  ) +
-  geom_point(
-    aes(weight, type),
-    size = 0.75
-  ) +
-  facet_wrap(
-    vars(discriminant),
-    ncol = 4
-  ) +
-  labs(
-    x = "Coefficients of Linear Determinants",
-    y = NULL
-  ) +
-  theme(
-    axis.text = element_text(color = "grey25"),
-    strip.text = element_text(hjust = 0)
-  )
-
-fn <- here("figures", "orientation-lda-coefficients.png")
-
-ggsave(
-  plot = gg,
-  filename = fn,
-  width = 7,
-  height = 4.5,
-  dpi = 300,
-  bg = "white"
-)
-
-prepare_image(fn)
-
-remove(gtbl, fn, gg)
-
-```
-
-::: {#fig-orientation-lda-coefficients}
-![](../figures/orientation-lda-coefficients.png){width="90%"
-fig-alt="Figure shows coefficients of linear discriminants for site orientation."}
-
-Figure shows coefficients of linear discriminants for site orientation.
-:::
-
-```{r}
-#| code-fold: true
-
-X <- orientation_matrix |>
-  select(-orientation) |>
-  as.matrix() |>
-  scale(
-    center = colMeans(orientation_lda[["means"]]),
-    scale = FALSE
-  )
-
-X <- X %*% orientation_lda[["scaling"]]
-
-plots <- map(
-  1:ncol(X),
-  \(i){
-    plots <- map(
-      1:ncol(X),
-      \(j){
-        if (i == j) {
-          gtbl <- tibble(
-            y = mean(X[, i]),
-            x = mean(X[, j]),
-            lbl = paste0("LD", i)
-          )
-
-          gg <- ggplot(gtbl) +
-            geom_text(
-              aes(x, y, label = lbl),
-              size = 14 / .pt
-            ) +
-            theme_bw(12) +
-            theme(
-              axis.text = element_blank(),
-              axis.ticks = element_blank()
-            )
-        } else {
-          gtbl <- tibble(
-            y = X[, i],
-            x = X[, j],
-            g = orientation_matrix[["orientation"]]
-          )
-
-          gg <- ggplot(gtbl) +
-            geom_hline(yintercept = 0, color = "gray75", linewidth = 0.3) +
-            geom_vline(xintercept = 0, color = "gray75", linewidth = 0.3) +
-            geom_point(
-              aes(x, y, fill = g),
-              shape = 21,
-              size = 1.6,
-              alpha = 0.75,
-              color = "gray35",
-              stroke = 0.2
-            ) +
-            scale_fill_brewer(name = "Orientation", palette = "YlOrBr") +
-            theme_bw(12)
-
-          if (i == 1) {
-            gg <- gg + scale_x_continuous(position = "top")
-
-            if (j < ncol(X)) {
-              gg <- gg +
-                theme(
-                  axis.text.y = element_blank(),
-                  axis.ticks.y = element_blank(),
-                  axis.title.y = element_blank()
-                )
-            } else {
-              gg <- gg + scale_y_continuous(position = "right")
-            }
-          } else if (i == ncol(X)) {
-            if (j > 1) {
-              gg <- gg +
-                theme(
-                  axis.text.y = element_blank(),
-                  axis.ticks.y = element_blank(),
-                  axis.title.y = element_blank()
-                )
-            }
-          } else {
-            if (j == 1) {
-              gg <- gg +
-                theme(
-                  axis.text.x = element_blank(),
-                  axis.ticks.x = element_blank(),
-                  axis.title.x = element_blank()
-                )
-            } else if (j > 1 && j < ncol(X)) {
-              gg <- gg +
-                theme(
-                  axis.text = element_blank(),
-                  axis.ticks = element_blank(),
-                  axis.title = element_blank()
-                )
-            } else {
-              gg <- gg +
-                scale_y_continuous(position = "right") +
-                theme(
-                  axis.text.x = element_blank(),
-                  axis.ticks.x = element_blank(),
-                  axis.title.x = element_blank()
-                )
-            }
-          }
-        }
-
-        gg +
-          theme(
-            axis.title = element_blank(),
-            panel.grid = element_blank(),
-            plot.margin = margin(1, 1, 1, 1)
-          )
-      }
-    )
-  }
-)
-
-gg <- wrap_plots(
-  unlist(plots, recursive = FALSE),
-  ncol = 4,
-  nrow = 4,
-  guides = "collect"
-) &
-  theme(
-    legend.justification = c(0, 0),
-    legend.direction = "horizontal",
-    legend.margin = margin(b = 2),
-    legend.position = "top",
-    legend.title.position = "top"
-  )
-
-fn <- here("figures", "orientation-lda-pairs.png")
-
-ggsave(
-  plot = gg,
-  filename = fn,
-  width = 7,
-  height = 7,
-  dpi = 300,
-  bg = "white"
-)
-
-prepare_image(fn)
-
-remove(X, plots, fn, gg)
-
-```
-
-::: {#fig-orientation-lda-pairs}
-![](../figures/orientation-lda-pairs.png){width="95%"
-fig-alt="Figure shows all pairwise combinations of linear discriminants for site orientation."}
-
-Figure shows all pairwise combinations of linear discriminants for site
-orientation.
-:::
-
-```{r}
-#| code-fold: true
-
-scores <- do.call("cbind", predict(orientation_lda)) |>
-  as_tibble() |>
-  select(class:WSW) |>
-  mutate(site = 1:n()) |>
-  pivot_longer(
-    -c(site, class),
-    names_to = "orientation",
-    values_to = "probability"
-  )
-
-group_scores <- scores |>
-  group_by(site) |>
-  summarize(D = diff(sort(probability))[4]) |>
-  ungroup()
-
-gg <- ggplot(group_scores, aes(D)) +
-  geom_density(
-    fill = "gray75",
-    outline.type = "full"
-    # binwidth = 0.02,
-    # center = 0.01,
-    # color = "white"
-  ) +
-  labs(
-    x = "Difference in Probability\nBetween Two Highest Probabilities",
-    y = NULL
-  )
-
-fn <- here("figures", "orientation-lda-discrimination.png")
-
-ggsave(
-  plot = gg,
-  filename = fn,
-  width = 5.35,
-  height = 4.5,
-  dpi = 300,
-  bg = "white"
-)
-
-prepare_image(fn)
-
-remove(var_exp, fn, gg)
-
-
-```
-
-::: {#fig-orientation-lda-ellipses}
-![](../figures/orientation-lda-ellipses.png){width="50%"
-fig-alt="Figure shows 95% confidence ellipses for LDA estimates of site orientation."}
-
-Figure shows 95% confidence ellipses for LDA estimates of site orientation.
-:::
-
-```{r}
-#| code-fold: true
-
-scores |>
-  select(orientation, class) |>
-  mutate(
-    result = map(class, \(v){
-      tibble(
-        g = c("ENE", "ESE", "SSE", "SSW", "WSW"),
-        p = as.integer(v == 1:5)
-      )
-    })
-  ) |>
-  unnest(result) |>
-  select(-class) |>
-  group_by(orientation, g) |>
-  summarize(p = sum(p)) |>
-  ungroup() |>
-  pivot_wider(
-    names_from = g,
-    values_from = p
-  )
-
-```
-
--->
-
 #### **What does population do over time?**
 
 We include climate estimates from [SKOPE](https://www.openskope.org/) here.
 
 ```{r}
+#| label: analysis-population-fig
 #| code-fold: true
-
 phase_key <- 1L:5L
 names(phase_key) <- names(phase_colors)
 
@@ -2378,7 +2018,8 @@ ts_population_regions <- sites |>
   ) |>
   ungroup() |>
   complete(
-    region, phase,
+    region,
+    phase,
     fill = list(population = 0, count = 0, p_pop = 0, p_cnt = 0)
   ) |>
   mutate(phase_id = phase_key[phase]) |>
@@ -2425,7 +2066,10 @@ ts_population_regions <- ts_population_regions |>
   group_by(variable, phase) |>
   arrange(region) |>
   mutate(
-    variable = factor(variable, levels = c("population", "count", "gdd", "ppt")),
+    variable = factor(
+      variable,
+      levels = c("population", "count", "gdd", "ppt")
+    ),
     ymin = lag(value, n = 1L, default = 0)
   ) |>
   ungroup()
@@ -2452,7 +2096,10 @@ ts_climate <- climate |>
     values_to = "value"
   ) |>
   mutate(
-    variable = factor(variable, levels = c("population", "count", "gdd", "ppt")),
+    variable = factor(
+      variable,
+      levels = c("population", "count", "gdd", "ppt")
+    ),
   )
 
 brks <- unique(c(start_key, end_key))
@@ -2504,7 +2151,9 @@ gg <- ggplot() +
     name = NULL,
     values = region_colors,
     labels = paste(
-      "<span style='color: ", darken(region_colors, 0.2), "'>",
+      "<span style='color: ",
+      darken(region_colors, 0.2),
+      "'>",
       region_labels,
       "</span>"
     )
@@ -2513,7 +2162,7 @@ gg <- ggplot() +
     breaks = brks,
     expand = c(0.01, 0.01),
     sec.axis = sec_axis(
-      transform = \(x){
+      transform = \(x) {
         x
       },
       breaks = brks[1:5] + diff(brks) / 2,
@@ -2548,11 +2197,20 @@ ggsave(
 prepare_image(fn)
 
 remove(
-  ts_climate, ts_population_regions, ts_population_project, ts_population,
-  time_series, gg, fn, alpha_values, line_values, start_key, end_key,
-  phase_key, brks
+  ts_climate,
+  ts_population_regions,
+  ts_population_project,
+  ts_population,
+  time_series,
+  gg,
+  fn,
+  alpha_values,
+  line_values,
+  start_key,
+  end_key,
+  phase_key,
+  brks
 )
-
 ```
 
 ::: {#fig-time-series}
@@ -2569,7 +2227,7 @@ across regions for each time period.
 #### **Does the relationship between abundance and site size vary through time?**
 
 ```{r}
-
+#| label: analysis-cer-abundance-time-mod
 abundance <- left_join(
   abundance,
   phases[c("site_id", "phase")],
@@ -2580,12 +2238,11 @@ temporal_abundance_model <- lm(
   log(ratio) ~ log(site_area) + phase,
   data = abundance
 )
-
 ```
 
 ```{r}
+#| label: analysis-cer-abundance-time-mod-tbl
 #| code-fold: true
-
 temporal_abundance_model |>
   tidy() |>
   mutate(
@@ -2597,7 +2254,7 @@ temporal_abundance_model |>
     "t Value" = Statistic,
     "p Value" = "P Value"
   ) |>
-  mutate(across(2:5, \(x){
+  mutate(across(2:5, \(x) {
     round(x, 4)
   })) |>
   kbl(
@@ -2609,15 +2266,14 @@ temporal_abundance_model |>
     full_width = FALSE,
     position = "left"
   )
-
 ```
 
 We already have a sense of what the slope looks like, but how does the mean
 response vary over time given the average mound area?
 
 ```{r}
+#| label: analysis-cer-abundance-time-mod-fig
 #| code-fold: true
-
 dependence <- predict_response(
   temporal_abundance_model,
   terms = list(
@@ -2692,7 +2348,6 @@ ggsave(
 prepare_image(fn)
 
 remove(dependence, lbls, gg, fn)
-
 ```
 
 ::: {#fig-temporal-abundance-dependence}
@@ -2706,15 +2361,14 @@ period. Note that the y axis has a log scale.
 Here are the linear model diagnostics.
 
 ```{r}
+#| label: analysis-cer-abundance-time-mod-check
 #| fig-align: center
 #| out-width: 85%
-
 check_model(
   temporal_abundance_model,
   check = c("qq", "linearity", "homogeneity", "outliers"),
   detrend = FALSE
 )
-
 ```
 
 The non-linearity is almost completely gone in this model, but
@@ -2728,8 +2382,8 @@ There is an interesting pattern of burned sites that may have something to do
 with the pattern of settlement in the region.
 
 ```{r}
+#| label: analysis-burned-sites
 #| code-fold: true
-
 bb8 <- survey_area |>
   st_buffer(1000) |>
   st_bbox()
@@ -2856,7 +2510,6 @@ ggsave(
 )
 
 remove(bb8, dx, dy, cover, gg, lbls)
-
 ```
 
 ::: {#fig-burn-map}
@@ -2869,7 +2522,7 @@ Figure shows geographic distribution of sites with evidence of burning.
 #### **How are lithics distributed across survey areas and time periods?**
 
 ```{r}
-
+#| label: analysis-lithics
 lithic_summary <- site_phases |>
   st_drop_geometry() |>
   left_join(lithics, by = "site_id") |>
@@ -2877,12 +2530,11 @@ lithic_summary <- site_phases |>
   summarize(count = sum(count)) |>
   ungroup() |>
   complete(region, phase, type, fill = list(count = 0))
-
 ```
 
 ```{r}
+#| label: analysis-lithics-tbl
 #| code-fold: true
-
 tbl <- lithic_summary |>
   mutate(
     phase_id = case_when(
@@ -2923,24 +2575,172 @@ tbl_lithic_summary |>
   scroll_box(height = "450px")
 ```
 
+#### **Additional figures requested by reviewers**
+
+Ware disributions across regions
+
+```{r}
+#| label: analysis-ware-distributions-fig
+#| code-fold: true
+tmp_labels <- paste0(
+  "<span style='color: ",
+  darken(region_colors, 0.2),
+  "'>",
+  region_labels,
+  "</span>"
+)
+
+names(tmp_labels) <- names(region_labels)
+
+tmp_data <- ceramics |>
+  group_by(region, ware) |>
+  summarize(count = sum(count)) |>
+  mutate(ware = sub(" Ware", "", ware)) |>
+  filter(ware != "Rio Puerco Gray") |>
+  ungroup() |>
+  tidyr::complete(region, ware, fill = list(count = 0)) |>
+  mutate(white = ifelse(count == 0, 1L, 2L))
+
+p <- ggplot(tmp_data) +
+  geom_col(
+    aes(count, ware, fill = region),
+    position = position_dodge2(0.9, reverse = TRUE)
+  ) +
+  geom_text(
+    aes(count, ware, label = count, color = as.factor(white), group = region),
+    position = position_dodge2(0.9, reverse = TRUE),
+    hjust = -0.2,
+    size = 7 / .pt
+  ) +
+  scale_color_manual(
+    values = c("white", "gray65"),
+    guide = "none"
+  ) +
+  scale_fill_manual(
+    name = NULL,
+    values = region_colors,
+    labels = paste(
+      "<span style='color: ",
+      darken(region_colors, 0.2),
+      "'>",
+      region_labels,
+      "</span>"
+    )
+  ) +
+  scale_x_continuous(limits = c(0, 2050)) +
+  geom_hline(
+    yintercept = seq(1.5, 11.5, by = 1),
+    color = "gray85",
+    linewidth = 0.1
+  ) +
+  labs(x = NULL, y = NULL) +
+  theme(
+    legend.background = element_blank(),
+    legend.justification.inside = c("right", "bottom"),
+    legend.position = "inside",
+    legend.position.inside = c(1, 0),
+    legend.text = element_markdown(size = rel(0.8)),
+    plot.margin = margin()
+  )
+
+tmp_data <- ceramics |>
+  left_join(phases[c("site_id", "phase")], by = "site_id") |>
+  group_by(phase, ware) |>
+  summarize(count = sum(count)) |>
+  mutate(ware = sub(" Ware", "", ware)) |>
+  filter(ware != "Rio Puerco Gray") |>
+  ungroup() |>
+  tidyr::complete(phase, ware, fill = list(count = 0)) |>
+  mutate(
+    phase = as.factor(phase),
+    phase = fct_relevel(
+      phase,
+      "Early PII",
+      "Late PII",
+      "Early PIII",
+      "Middle PIII"
+    ),
+    white = ifelse(count == 0, 1L, 2L)
+  )
+
+p2 <- ggplot(tmp_data) +
+  geom_col(
+    aes(count, ware, fill = phase),
+    position = position_dodge2(0.9, reverse = TRUE)
+  ) +
+  geom_text(
+    aes(count, ware, label = count, color = as.factor(white), group = phase),
+    position = position_dodge2(0.9, reverse = TRUE),
+    hjust = -0.2,
+    size = 7 / .pt
+  ) +
+  scale_color_manual(
+    values = c("white", "gray65"),
+    guide = "none"
+  ) +
+  scale_fill_manual(
+    name = NULL,
+    values = phase_colors,
+    labels = paste(
+      "<span style='color: ",
+      darken(phase_colors, 0.2),
+      "'>",
+      names(phase_colors),
+      "</span>"
+    )
+  ) +
+  scale_x_continuous(limits = c(0, 1700)) +
+  geom_hline(
+    yintercept = seq(1.5, 11.5, by = 1),
+    color = "gray85",
+    linewidth = 0.1
+  ) +
+  labs(x = NULL, y = NULL) +
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    legend.background = element_blank(),
+    legend.justification.inside = c("right", "bottom"),
+    legend.position = "inside",
+    legend.position.inside = c(1, 0),
+    legend.text = element_markdown(size = rel(0.8)),
+    plot.margin = margin(l = 4)
+  )
+
+ggsave(
+  plot = p + p2,
+  filename = here("figures", "wares-by-region-and-phase.png"),
+  width = 6.5,
+  height = 6,
+  dpi = 300,
+  bg = "white"
+)
+```
+
+::: {#fig-ware-dists}
+![](../figures/wares-by-region-and-phase.png){width="90%"
+fig-alt="Figure shows spatial and temporal distribution of ceramic wares."}
+
+Figure shows spatial and temporal distribution of ceramic wares
+:::
+
 ## Store Tables
 
 Tables are still a mess in Quarto, so we store everything we need to recreate them in the manuscript. To be fair, that's mostly because everyone still wants to support LaTeX, and LaTeX is terrible.
 
 ```{r}
-
+#| label: save-results
 save(
   list = ls(pattern = "tbl_"),
   file = here("data", "tables.Rdata")
 )
-
 ```
 
 ## Session Info
 
 ```{r}
+#| label: session-info
 #| code-fold: true
-
 # save the session info as an object
 pkg_sesh <- sessioninfo::session_info(pkgs = "attached")
 
@@ -2953,11 +2753,9 @@ pkg_sesh$platform$quarto <- paste(
 
 # print it out
 pkg_sesh
-
 ```
 
 ```{js, echo = FALSE}
-
 // Get all <h4> elements on the page
 const headers = document.querySelectorAll('h4');
 
@@ -2997,5 +2795,4 @@ const targetDiv = document.getElementById('question-toc');
 if (targetDiv) {
     targetDiv.appendChild(list);
 }
-
 ```

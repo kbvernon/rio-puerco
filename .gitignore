@@ -12,3 +12,5 @@
 
 /manuscript/manuscript_files
 /manuscript/manuscript.html
+**/*.quarto_ipynb
+*.docx
